@@ -39,14 +39,14 @@ header {
     align-items: center;
 
 }
-#ss{
+/* #ss{
     width: 100px;
     height: 100px;
     margin-left: 150px;
     margin-top: 20px;
     margin-bottom: 20px;
     
-}
+} */
 #welcome{
     font-style: normal;
     font-size: 30px;
@@ -75,30 +75,45 @@ hr {
     margin-bottom: 40px;
     font-style: bold;
 }
-
-.link5{
-/* right: 0; left: 5; top: 20px; */
-    transition: all 0.3s ease; /* Adjusted transition for smoother hover */
-    margin-left: auto; /* Push it to the right on desktop */
-    margin-right: 50px;
-}
-
+/* Fix main logo position (EduSaga) */
 #ed{
-    margin-left: 120px;
+    margin-left: 50px; /* Reduced from 120px to move it closer to the corner */
     margin-right: 20px;
 }
 
+/* Fix Login Icon Container (.link5) */
+.link5{
+    /* Use position absolute to anchor it to the corner */
+    position: absolute; 
+    right: 40px; /* Distance from right corner */
+    top: 30px; /* Distance from top */
+    transition: all 0.3s ease; /* Removed the 5s transition which caused the "sliding" */
+    margin-right: 0;
+    margin-left: auto; /* Ensure it is pushed away from other elements */
+}
+
+/* Fix Login Icon (#lo) */
 #lo{
     width: 45px;
     height: 45px;
     border-radius: 50%;
     border: 2px solid rgb(100, 100, 100);
-    /* IMPORTANT: Remove position: fixed here */
+    /* IMPORTANT: Remove position: fixed; and use position: static; */
     position: static; 
 }
 #lo:hover{
-width: 50px;
+    width: 50px;
     height: 50px;
+}
+
+/* Fix Spaceship Image margin */
+#ss{
+    width: 100px;
+    height: 100px;
+    margin-left: 50px; /* Reduced margin to bring it closer to the left */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
 }
 nav a {
     color: #ffc400;
@@ -222,61 +237,68 @@ ul li:hover {
 }
 /* --- Mobile Layout Fixes (Max Width 768px) --- */
 /* --- Mobile Layout Fixes (Max Width 768px) --- */
+/* --- Mobile Layout Fixes (Max Width 768px) --- */
 @media (max-width: 768px) {
     
-    /* 1. HEADER & NAVIGATION FIXES */
+    /* 1. HEADER & NAVIGATION FIXES (HORIZONTAL FLOW) */
     header {
-        flex-direction: column; /* Stack logo and nav vertically */
+        flex-direction: row; /* KEEP horizontal on mobile */
+        flex-wrap: wrap; /* Allow items to wrap to the next line */
         height: auto; 
-        padding: 10px 20px; 
+        padding: 10px 10px; 
+        /* Ensure children are aligned */
+        justify-content: space-between;
     }
-
-    /* Adjust the logo/edu saga link's container */
+    
+    /* Center the EduSaga logo/link */
     #ed {
-        margin: 0 auto 10px auto; /* Center it and add space below */
-        order: 1; /* Place the main logo first */
-    }
-    
-    /* Center the navigation */
-    nav {
-        flex-direction: column; 
-        width: 100%;
-        text-align: center;
-        margin-top: 10px;
-        order: 2; /* Place the links second */
+        margin-left: 10px; /* Small margin from the corner */
+        order: 1; /* Keep it on the first line */
     }
 
-    /* Ensure navigation links take full width for better tapping */
-    nav a {
-        display: block;
-        margin: 5px 0;
-        padding: 8px;
-        /* Reduce font size for space */
-        font-size: 16px; 
-    }
-    
-    /* Move the login icon to the top of the header in mobile view */
+    /* Position the login icon relative to the header flow */
     .link5 {
-        margin: 10px auto; 
-        order: 0; /* Place it BEFORE the logo and nav links */
+        position: static; /* Remove absolute positioning on small screens */
+        order: 2; /* Keep it on the first line */
+        margin: 10px 10px 0 auto; /* Push to the right and center vertically */
     }
     
-    /* 2. WELCOME SECTION FIXES */
+    /* Navigation links container */
+    nav {
+        flex-direction: row; /* Keep links horizontal */
+        flex-wrap: wrap;
+        justify-content: center; /* Center the links */
+        width: 100%;
+        margin-top: 10px;
+        order: 3; /* Push to the second line */
+    }
+
+    /* Ensure navigation links have proper spacing */
+    nav a {
+        display: inline-block;
+        margin: 5px 8px; /* Horizontal spacing for links */
+        padding: 6px;
+        font-size: 12px; /* Smaller font size */
+    }
+    
+    /* 2. WELCOME SECTION FIXES (VERTICAL STACK) */
     .content {
         flex-direction: column; /* Stack image and welcome text vertically */
         text-align: center;
+        width: 100%;
     }
 
-    /* Fix the welcome text styling - this was the biggest issue */
+    /* Fix the welcome text styling */
     #welcome {
         font-size: 20px; 
         text-align: center;
         /* Drastically reduce horizontal padding for mobile view */
         padding: 10px 20px; 
         margin: 10px 0; 
-        /* Ensure the element itself is centered */
         width: 90%;
-        box-sizing: border-box; /* Include padding in width calculation */
+        box-sizing: border-box; 
+        margin-right: auto;
+        margin-left: auto;
     }
 
     /* Adjust the spaceship image/logo */
@@ -284,17 +306,17 @@ ul li:hover {
         width: 80px; 
         height: 80px;
         margin: 20px auto; 
-        margin-left: 0; /* Remove the conflicting desktop margin */
+        margin-left: auto; /* Ensure it is centered by overriding the desktop margin */
     }
     
-    /* Adjust general layout for second welcome block */
+    /* Ensure the general text is centered and contained */
     .content h2, .content p {
         width: 90%; 
         margin: 10px auto; 
         text-align: center;
     }
     
-    /* Make the tool sections slightly narrower and centered */
+    /* General element sizing */
     .tool-section {
         max-width: 95%;
         padding: 15px;
