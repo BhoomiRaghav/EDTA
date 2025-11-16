@@ -232,85 +232,79 @@ ul li:hover {
     background: #ffc400;
     color: black;
 }
-/* ------------------------------ 
-   MOBILE HEADER FIX (Horizontal + Compact)
+
+/* ------------------------------
+   MOBILE MORE MENU
 ------------------------------ */
 @media (max-width: 768px) {
 
-    /* HEADER — clean + small */
-    header {
+    nav {
         display: flex;
-        flex-direction: row;
         align-items: center;
-        justify-content: space-between;
-        padding: 6px 12px;
-        height: 60px; /* compact mobile height */
-        position: sticky;
-        top: 0;
+        gap: 10px;
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    /* hide the original links (they're now inside More) */
+    nav .link1,
+    nav .link2,
+    nav .link3,
+    nav .link4 {
+        display: none;
+    }
+
+    /* More button */
+    .more-btn {
+        font-size: 12px;
+        color: #ffc400;
+        padding: 6px 10px;
+        border: 1px solid #ffc400;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    /* Dropdown menu */
+    .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 60px; 
+        right: 15px;
+        background: rgba(0,0,0,0.9);
+        border: 2px solid #ffc400;
+        border-radius: 8px;
+        padding: 10px;
+        width: 160px;
         z-index: 999;
     }
 
-    /* LOGO shrinks properly */
-    #ed img {
-        width: 65px;
-        height: 50px;
-        margin: 0;
+    .mobile-menu a {
+        display: block;
+        padding: 8px;
+        color: #ffc400;
+        text-decoration: none;
+        font-size: 12px;
+        border-bottom: 1px solid rgba(255, 196, 0, 0.4);
     }
 
-    /* NAV stays horizontal but compact */
-    nav {
-        display: flex;
-        flex-direction: row;
-        gap: 8px;
-        flex-wrap: nowrap; /* prevents multi-line chaos */
+    .mobile-menu a:last-child {
+        border-bottom: none;
     }
 
-    /* NAV LINKS — shrink gracefully */
-    nav a {
-        font-size: 10px;
-        padding: 4px 6px;
-        margin: 0;
+    /* Show menu when clicked */
+    .show-menu {
+        display: block;
     }
 
-    /* LOGIN ICON — stays right, no drama */
+    /* Login icon stays right */
     .link5 {
+        margin-left: auto;
+        margin-right: 10px;
         position: static;
-        margin-left: 10px;
     }
 
     #lo {
         width: 32px;
         height: 32px;
     }
-
-
-    #ss {
-        width: 60px;
-        height: 60px;
-        margin: 10px 0;
-    }
-
-    #welcome {
-        font-size: 16px;
-        width: 95%;
-        padding: 8px;
-        margin: 0 auto;
-    }
-
-    /* TEXT BLOCKS */
-    .content h2 {
-        font-size: 18px;
-    }
-
-    .content p {
-        font-size: 12px;
-    }
-
-    /* TOOL SECTIONS = Fit nicely */
-    .tool-section {
-        max-width: 95%;
-        padding: 15px;
-    }
 }
-
-
