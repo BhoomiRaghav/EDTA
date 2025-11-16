@@ -281,11 +281,8 @@ ul li:hover {
     }
 
     /* ROCKET + WELCOME TEXT SECTION FIX */
-    .content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 5px;
+     .content-stack { 
+         flex-direction: column; align-items: center; text-align: center; 
     }
 
     #ss {
@@ -316,3 +313,4 @@ ul li:hover {
         padding: 15px;
     }
 }
+
