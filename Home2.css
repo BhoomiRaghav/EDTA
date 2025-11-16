@@ -83,6 +83,10 @@ hr {
     margin-bottom: 40px;
     font-style: bold;
 }
+.show-menu {
+    display: block !important;
+}
+
 
 .link5{
     position: absolute;
@@ -236,25 +240,46 @@ ul li:hover {
 /* ------------------------------
    MOBILE MORE MENU
 ------------------------------ */
+
 @media (max-width: 768px) {
 
+    /* HEADER stays horizontal + compact */
+    header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 12px;
+        height: 60px;
+    }
+
+    /* Remove the huge forced desktop margin */
+    #ed {
+        margin-left: 0 !important;
+    }
+
+    #ed img {
+        width: 65px;
+        height: 50px;
+    }
+
+    /* NAV becomes a small row */
     nav {
         display: flex;
         align-items: center;
-        gap: 10px;
-        justify-content: flex-end;
-        width: 100%;
+        gap: 8px;
+        position: relative;
     }
 
-    /* hide the original links (they're now inside More) */
+    /* HIDE original links on phone */
     nav .link1,
     nav .link2,
     nav .link3,
     nav .link4 {
-        display: none;
+        display: none !important;
     }
 
-    /* More button */
+    /* MORE BUTTON */
     .more-btn {
         font-size: 12px;
         color: #ffc400;
@@ -262,27 +287,27 @@ ul li:hover {
         border: 1px solid #ffc400;
         border-radius: 6px;
         cursor: pointer;
+        display: inline-block;
     }
 
-    /* Dropdown menu */
+    /* DROPDOWN MENU */
     .mobile-menu {
         display: none;
         position: absolute;
-        top: 60px; 
-        right: 15px;
+        right: 0;
+        top: 55px;
         background: rgba(0,0,0,0.9);
         border: 2px solid #ffc400;
         border-radius: 8px;
-        padding: 10px;
         width: 160px;
-        z-index: 999;
+        padding: 10px;
+        z-index: 1000;
     }
 
     .mobile-menu a {
         display: block;
         padding: 8px;
         color: #ffc400;
-        text-decoration: none;
         font-size: 12px;
         border-bottom: 1px solid rgba(255, 196, 0, 0.4);
     }
@@ -291,20 +316,19 @@ ul li:hover {
         border-bottom: none;
     }
 
-    /* Show menu when clicked */
     .show-menu {
         display: block;
     }
 
-    /* Login icon stays right */
+    /* LOGIN ICON — FIXED PROPERLY */
     .link5 {
-        margin-left: auto;
-        margin-right: 10px;
-        position: static;
+        position: static !important;
+        margin: 0 !important;
     }
 
     #lo {
         width: 32px;
         height: 32px;
+        border-radius: 50%;
     }
 }
