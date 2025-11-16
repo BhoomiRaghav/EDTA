@@ -18,19 +18,18 @@ body {
 
 header {
     display: flex;
-    
     align-items: center;
     background-color: rgba(13, 13, 36);
     border-bottom: 2px solid #ffc400;
     padding: 10px, 40px; 
-    position:sticky;
+    position:sticky; /* Ensure this is set */
     top:0;
     left: 0;
     width: 100%;
-    height: 18%;
+    height: 18%; /* This should be auto, but we'll fix it in media query */
     z-index: 700;   
-
 }
+
 
 .content {
     display: flex;
@@ -39,14 +38,14 @@ header {
     align-items: center;
 
 }
-/* #ss{
+#ss{
     width: 100px;
     height: 100px;
     margin-left: 150px;
     margin-top: 20px;
     margin-bottom: 20px;
     
-} */
+}
 #welcome{
     font-style: normal;
     font-size: 30px;
@@ -75,45 +74,31 @@ hr {
     margin-bottom: 40px;
     font-style: bold;
 }
-/* Fix main logo position (EduSaga) */
+
+.link5{
+    position: absolute;
+    right: 0;
+    left: 5;
+    top: 20px;
+    /* transition: all 5s ease-in 3s; */
+    margin-right: 50px;
+}
+
 #ed{
-    margin-left: 50px; /* Reduced from 120px to move it closer to the corner */
+    margin-left: 120px;
     margin-right: 20px;
 }
 
-/* Fix Login Icon Container (.link5) */
-.link5{
-    /* Use position absolute to anchor it to the corner */
-    position: absolute; 
-    right: 40px; /* Distance from right corner */
-    top: 30px; /* Distance from top */
-    transition: all 0.3s ease; /* Removed the 5s transition which caused the "sliding" */
-    margin-right: 0;
-    margin-left: auto; /* Ensure it is pushed away from other elements */
-}
-
-/* Fix Login Icon (#lo) */
 #lo{
     width: 45px;
     height: 45px;
     border-radius: 50%;
     border: 2px solid rgb(100, 100, 100);
-    /* IMPORTANT: Remove position: fixed; and use position: static; */
-    position: static; 
+    position: fixed;
 }
 #lo:hover{
-    width: 50px;
+width: 50px;
     height: 50px;
-}
-
-/* Fix Spaceship Image margin */
-#ss{
-    width: 100px;
-    height: 100px;
-    margin-left: 50px; /* Reduced margin to bring it closer to the left */
-    margin-top: 20px;
-    margin-bottom: 20px;
-    
 }
 nav a {
     color: #ffc400;
@@ -236,90 +221,87 @@ ul li:hover {
     color: black;
 }
 /* --- Mobile Layout Fixes (Max Width 768px) --- */
-/* --- Mobile Layout Fixes (Max Width 768px) --- */
-/* --- Mobile Layout Fixes (Max Width 768px) --- */
 @media (max-width: 768px) {
     
-    /* 1. HEADER & NAVIGATION FIXES (HORIZONTAL FLOW) */
+    /* 1. HORIZONTAL HEADER & NAVIGATION FIXES */
     header {
-        flex-direction: row; /* KEEP horizontal on mobile */
-        flex-wrap: wrap; /* Allow items to wrap to the next line */
-        height: auto; 
+        flex-direction: row; /* KEEP horizontal as requested */
+        flex-wrap: wrap; /* Allow navigation links to wrap below the logo/icon */
+        height: auto; /* Allow height to adjust */
         padding: 10px 10px; 
-        /* Ensure children are aligned */
-        justify-content: space-between;
+        justify-content: space-between; /* Space out the logo and login icon */
     }
     
-    /* Center the EduSaga logo/link */
-    #ed {
-        margin-left: 10px; /* Small margin from the corner */
-        order: 1; /* Keep it on the first line */
-    }
-
-    /* Position the login icon relative to the header flow */
-    .link5 {
-        position: static; /* Remove absolute positioning on small screens */
-        order: 2; /* Keep it on the first line */
-        margin: 10px 10px 0 auto; /* Push to the right and center vertically */
-    }
-    
-    /* Navigation links container */
-    nav {
-        flex-direction: row; /* Keep links horizontal */
-        flex-wrap: wrap;
-        justify-content: center; /* Center the links */
-        width: 100%;
-        margin-top: 10px;
-        order: 3; /* Push to the second line */
-    }
-
-    /* Ensure navigation links have proper spacing */
-    nav a {
-        display: inline-block;
-        margin: 5px 8px; /* Horizontal spacing for links */
-        padding: 6px;
-        font-size: 12px; /* Smaller font size */
-    }
-    
-    /* 2. WELCOME SECTION FIXES (VERTICAL STACK) */
-    .content {
-        flex-direction: column; /* Stack image and welcome text vertically */
-        text-align: center;
-        width: 100%;
-    }
-
-    /* Fix the welcome text styling */
-    #welcome {
-        font-size: 20px; 
-        text-align: center;
-        /* Drastically reduce horizontal padding for mobile view */
-        padding: 10px 20px; 
-        margin: 10px 0; 
-        width: 90%;
-        box-sizing: border-box; 
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    /* Adjust the spaceship image/logo */
-    #ss {
+    /* Shrink the main header logo */
+    #ed img {
         width: 80px; 
-        height: 80px;
-        margin: 20px auto; 
-        margin-left: auto; /* Ensure it is centered by overriding the desktop margin */
+        height: 60px;
     }
     
-    /* Ensure the general text is centered and contained */
-    .content h2, .content p {
+    /* Shrink the navigation text and ensure it wraps */
+    nav {
+        flex-direction: row; 
+        flex-wrap: wrap;
+        justify-content: center; 
+        width: 100%; /* Forces the nav to occupy a new line */
+        margin-top: 5px;
+        order: 3; /* Pushes the navigation to the next row */
+    }
+
+    /* Shrink the link text */
+    nav a {
+        font-size: 10px; /* Smaller font size for links */
+        margin: 5px 5px; 
+        padding: 4px;
+    }
+    
+    /* Ensure the login icon is correctly placed without absolute/fixed issues */
+    .link5 {
+        position: static; 
+        order: 2; 
+        margin: 10px 10px 0 auto; 
+    }
+    
+    #lo {
+        width: 35px; /* Smaller login icon */
+        height: 35px;
+    }
+
+    /* 2. WELCOME TEXT ALIGNMENT FIXES */
+    /* Target the container for the welcome text (h2 and p) */
+    /* This section currently has: Welcome to EDTA_2025 (h2) and Your gateway... (p) */
+    .content:nth-of-type(2) {
+        flex-direction: column; /* FORCES stacking for the welcome text */
+        align-items: center; /* Center them horizontally */
+        text-align: center;
+    }
+    
+    .content h2 {
         width: 90%; 
+        font-size: 20px; 
         margin: 10px auto; 
         text-align: center;
     }
     
+    .content p {
+        width: 90%; 
+        font-size: 12px;
+        margin: 10px auto; 
+        text-align: center;
+    }
+
+    /* 3. WELCOME BANNER FIXES */
+    #welcome {
+        font-size: 20px; 
+        text-align: center;
+        padding: 10px 20px; /* Reduced padding */
+        width: 90%;
+        box-sizing: border-box; 
+        margin: 10px auto;
+    }
+
     /* General element sizing */
     .tool-section {
         max-width: 95%;
-        padding: 15px;
-        margin: 20px auto;
     }
 }
