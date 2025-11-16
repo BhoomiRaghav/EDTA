@@ -229,90 +229,90 @@ ul li:hover {
     background: #ffc400;
     color: black;
 }
-/* --- Mobile Layout Fixes (Max Width 768px) --- */
+/* ------------------------------ 
+   MOBILE HEADER FIX (Horizontal + Compact)
+------------------------------ */
 @media (max-width: 768px) {
-    
-    /* 1. HORIZONTAL HEADER & NAVIGATION FIXES */
+
+    /* HEADER — clean + small */
     header {
-        flex-direction: row; /* KEEP horizontal as requested */
-        flex-wrap: wrap; /* Allow navigation links to wrap below the logo/icon */
-        height: 10%; /* takes 10% of the viewport height */
-        padding: 10px 10px; 
-        justify-content: space-between; /* Space out the logo and login icon */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 12px;
+        height: 60px; /* compact mobile height */
+        position: sticky;
+        top: 0;
+        z-index: 999;
     }
-    
-    /* Shrink the main header logo */
+
+    /* LOGO shrinks properly */
     #ed img {
-        width: 80px; 
-        height: 60px;
+        width: 65px;
+        height: 50px;
+        margin: 0;
     }
-    
-    /* Shrink the navigation text and ensure it wraps */
+
+    /* NAV stays horizontal but compact */
     nav {
-        flex-direction: row; 
-        flex-wrap: wrap;
-        justify-content: center; 
-        width: 100%; /* Forces the nav to occupy a new line */
-        margin-top: 5px;
-        order: 3; /* Pushes the navigation to the next row */
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        flex-wrap: nowrap; /* prevents multi-line chaos */
     }
 
-    /* Shrink the link text */
+    /* NAV LINKS — shrink gracefully */
     nav a {
-        font-size: 10px; /* Smaller font size for links */
-        margin: 5px 5px; 
-        padding: 4px;
+        font-size: 10px;
+        padding: 4px 6px;
+        margin: 0;
     }
-    
-    /* Ensure the login icon is correctly placed without absolute/fixed issues */
+
+    /* LOGIN ICON — stays right, no drama */
     .link5 {
-        position: static; 
-        order: 2; 
-        margin: 10px 10px 0 auto; 
+        position: static;
+        margin-left: 10px;
     }
-    
+
     #lo {
-        width: 35px; /* Smaller login icon */
-        height: 35px;
+        width: 32px;
+        height: 32px;
     }
 
-    /* 2. WELCOME TEXT ALIGNMENT FIXES */
-    /* Target the container for the welcome text (h2 and p) */
-    /* This section currently has: Welcome to EDTA_2025 (h2) and Your gateway... (p) */
-/* 2. WELCOME TEXT ALIGNMENT FIXES */
-.content-stack {
-    /* Ensure styles are still applied, though they largely match the new desktop style */
-    flex-direction: column; 
-    align-items: center; 
-    text-align: center;
-}
-    
-    .content h2 {
-        width: 90%; 
-        font-size: 20px; 
-        margin: 10px auto; 
+    /* ROCKET + WELCOME TEXT SECTION FIX */
+    .content {
+        flex-direction: column;
+        align-items: center;
         text-align: center;
-    }
-    
-    .content p {
-        width: 90%; 
-        font-size: 12px;
-        margin: 10px auto; 
-        text-align: center;
+        padding: 5px;
     }
 
-    /* 3. WELCOME BANNER FIXES */
+    #ss {
+        width: 60px;
+        height: 60px;
+        margin: 10px 0;
+    }
+
     #welcome {
-        font-size: 20px; 
-        text-align: center;
-        padding: 10px 20px; /* Reduced padding */
-        width: 90%;
-        box-sizing: border-box; 
-        margin: 10px auto;
+        font-size: 16px;
+        width: 95%;
+        padding: 8px;
+        margin: 0 auto;
     }
 
-    /* General element sizing */
+    /* TEXT BLOCKS */
+    .content h2 {
+        font-size: 18px;
+    }
+
+    .content p {
+        font-size: 12px;
+    }
+
+    /* TOOL SECTIONS = Fit nicely */
     .tool-section {
         max-width: 95%;
+        padding: 15px;
     }
 }
