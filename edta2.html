@@ -117,7 +117,8 @@
         // Logout function
         function logout() {
             localStorage.removeItem('edta_currentUser');
-            window.location.href = 'welcomepage.html';
+            currentUser = null;
+            checkLoggedIn(); // Refresh the page state
         }
 
         let timer;
