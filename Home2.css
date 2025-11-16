@@ -141,6 +141,9 @@ nav a {
     text-shadow: 2px 2px 0 #7a5a00;
     font-size: 14px;
 }
+.content-stack { 
+         flex-direction: column; align-items: center; text-align: center; 
+}
 
 
 button {
@@ -280,10 +283,6 @@ ul li:hover {
         height: 32px;
     }
 
-    /* ROCKET + WELCOME TEXT SECTION FIX */
-     .content-stack { 
-         flex-direction: column; align-items: center; text-align: center; 
-    }
 
     #ss {
         width: 60px;
@@ -313,4 +312,5 @@ ul li:hover {
         padding: 15px;
     }
 }
+
 
