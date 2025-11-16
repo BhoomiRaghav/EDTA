@@ -38,6 +38,15 @@ header {
     align-items: center;
 
 }
+/* New style for the second content section to stack/center its elements on laptops */
+.content-stack {
+    flex-direction: column; /* Stack the h2 and p vertically */
+    justify-content: center; /* Center them horizontally */
+    align-items: center; /* Center them horizontally */
+    text-align: center; /* Ensure the text itself is centered */
+    margin: 20px auto; /* Add some vertical space and center the container */
+}
+
 #ss{
     width: 100px;
     height: 100px;
@@ -227,7 +236,7 @@ ul li:hover {
     header {
         flex-direction: row; /* KEEP horizontal as requested */
         flex-wrap: wrap; /* Allow navigation links to wrap below the logo/icon */
-        height: auto; /* Allow height to adjust */
+        height: 10%; /* takes 10% of the viewport height */
         padding: 10px 10px; 
         justify-content: space-between; /* Space out the logo and login icon */
     }
@@ -270,11 +279,13 @@ ul li:hover {
     /* 2. WELCOME TEXT ALIGNMENT FIXES */
     /* Target the container for the welcome text (h2 and p) */
     /* This section currently has: Welcome to EDTA_2025 (h2) and Your gateway... (p) */
-    .content:nth-of-type(2) {
-        flex-direction: column; /* FORCES stacking for the welcome text */
-        align-items: center; /* Center them horizontally */
-        text-align: center;
-    }
+/* 2. WELCOME TEXT ALIGNMENT FIXES */
+.content-stack {
+    /* Ensure styles are still applied, though they largely match the new desktop style */
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+}
     
     .content h2 {
         width: 90%; 
