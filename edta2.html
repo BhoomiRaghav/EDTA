@@ -81,7 +81,7 @@
     </footer>
 
     <script>
-        // Check if user is logged in - but allow page to load
+        
         let currentUser = null;
 
         function checkLoggedIn() {
@@ -93,14 +93,14 @@
                 document.getElementById('loginBtn').style.display = 'none';
                 loadUserData();
             } else {
-                // Show login button if not logged in
+               
                 document.getElementById('profileName').textContent = 'Guest';
                 document.getElementById('loginBtn').style.display = 'inline';
                 document.getElementById('logoutBtn').style.display = 'none';
             }
         }
 
-        // Check authentication before using any feature
+        
         function requireLogin() {
             if (!currentUser) {
                 window.location.href = 'login.html';
@@ -109,7 +109,7 @@
             return true;
         }
 
-        // Load user data from localStorage
+       
         function loadUserData() {
             if (!currentUser) return;
             const userXp = parseInt(localStorage.getItem('edta_xp_' + currentUser.username) || '0');
@@ -117,11 +117,11 @@
             loadGoals();
         }
 
-        // Logout function
+        
         function logout() {
             localStorage.removeItem('edta_currentUser');
             currentUser = null;
-            checkLoggedIn(); // Refresh the page state
+            checkLoggedIn(); 
         }
 
         let timer;
@@ -234,7 +234,7 @@
             loadGoals();
         }
 
-        // Check login on page load (but don't redirect)
+        
         window.addEventListener('load', checkLoggedIn);
 
         const activities = [
