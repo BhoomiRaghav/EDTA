@@ -7,7 +7,7 @@
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
+     
     body {
       margin: 0;
       padding: 0;
@@ -98,17 +98,44 @@
       <a href="edta2.html" class="btn">ENTER WEBSITE</a>
     </div>
   </div>
+  <audio id="fireSound" loop>
+  <source src="fireplace-loop-original-noise-178209.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="pianoSound" loop>
+  <source src="soft-piano-72454.mp3" type="audio/mpeg">
+</audio>
 
   <script>
-    // Show logged in username if available
-    window.addEventListener('load', function() {
-      const currentUser = localStorage.getItem('edta_currentUser');
-      if (currentUser) {
-        const user = JSON.parse(currentUser);
-        document.querySelector('.welcome-box h1').textContent = `Welcome back, ${user.username}!`;
-      }
+window.addEventListener('DOMContentLoaded', () => {
+
+  const fire = document.getElementById('fireSound');
+  const piano = document.getElementById('pianoSound');
+
+  fire.volume = 0.35;
+  piano.volume = 0.18;
+
+  const startAudio = () => {
+    Promise.all([
+      fire.play(),
+      piano.play()
+    ]).then(() => {
+      console.log("🔥🎹 Audio started");
+      document.removeEventListener('click', startAudio);
+      document.removeEventListener('keydown', startAudio);
+    }).catch(err => {
+      console.warn("Audio blocked:", err);
     });
-  </script>
+  };
+
+  document.addEventListener('click', startAudio);
+  document.addEventListener('keydown', startAudio);
+});
+</script>
+
+
+ 
+
 
 </body>
 </html>
